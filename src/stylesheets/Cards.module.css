@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 2rem;
+    padding: rem;
     margin-top: 2%;
 }
 
@@ -27,13 +27,13 @@
 .paginationBtn {
     background-color: dodgerblue;
     border: 2px solid dodgerblue;
-    padding: 1rem;
+    padding: 0.7rem;
     border-radius: 4px;
     transition: all 0.2s ease-in;
     color: #ffffff;
     letter-spacing: 0.1rem;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .paginationBtn:hover {

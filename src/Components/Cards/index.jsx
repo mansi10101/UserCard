@@ -1,8 +1,8 @@
 import * as React from 'react';
-import styles from '../stylesheets/Cards.module.css';
-import Card from '../Cards/Card';
-import Loading from '../Components/Loading';
-import NoData from '../Components/NoData';
+import styles from '../../stylesheets/Cards.module.css';
+import Card from './Card';
+import Loading from '../Loading';
+import NoData from '../NoData';
 
 const CardWrapper = ({ users, refresh, page, setPage }) => {
 	return (

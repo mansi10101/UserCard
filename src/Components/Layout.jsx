@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from '../stylesheets/Layout.module.css';
-import CardWrapper from '../Cards';
+import CardWrapper from './Cards';
 import Navbar from '../Components/Navbar';
 
 const Layout = () => {

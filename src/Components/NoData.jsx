@@ -12,7 +12,7 @@ const NoData = () => {
 				alignItems: 'center',
 				justifyContent: 'center',
 				color: '#fff',
-				fontSize: '3.5rem',
+				fontSize: '2rem',
 				fontWeight: '700',
 				letterSpacing: '0.2rem',
 			}}
