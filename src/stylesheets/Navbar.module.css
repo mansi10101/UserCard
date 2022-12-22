@@ -12,7 +12,7 @@
 }
 
 .logo {
-    font-size: 1.6rem;
+    font-size: 3rem;
     color: #555964;
     font-weight: 700;
     letter-spacing: 0.1rem;
@@ -20,7 +20,7 @@
 
 .apiBtn {
     background: #00c6bc;
-    padding: 0.3rem 2rem;
+    padding: 1rem;
     border: 2px solid #00c6bc;
     border-radius: 4px;
     transition: all 0.2s ease-in;

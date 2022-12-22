@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../stylesheets/Navbar.module.css';
 
-const Navbar = () => {
+const Navbar = ({ apiCall }) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.section}>
@@ -9,7 +9,9 @@ const Navbar = () => {
 			</div>
 			<div className={styles.section}>
 				<div className={styles.btnSection}>
-					<button className={styles.apiBtn}>Get Users</button>
+					<button className={styles.apiBtn} onClick={() => apiCall(1)}>
+						Get Users
+					</button>
 				</div>
 			</div>
 		</div>
