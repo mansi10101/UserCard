@@ -9,7 +9,7 @@ const Navbar = ({ apiCall }) => {
 			</div>
 			<div className={styles.section}>
 				<div className={styles.btnSection}>
-					<button className={styles.apiBtn} onClick={() => apiCall(1)}>
+					<button className={styles.apiBtn} onClick={() => apiCall()}>
 						Get Users
 					</button>
 				</div>

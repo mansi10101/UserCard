@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Card = ({ styles, user }) => {
-	console.log(user);
 	return (
 		<div className={styles.card}>
 			<div className={styles.leftSide}>
@@ -18,7 +17,6 @@ const Card = ({ styles, user }) => {
 				<div className={styles.email}>{user.email}</div>
 			</div>
 		</div>
-       
 	);
 };
 
