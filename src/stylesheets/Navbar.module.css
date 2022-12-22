@@ -1,0 +1,40 @@
+.container {
+    background-color: #e0f1ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5rem;
+    color: #343434;
+}
+
+.section {
+    min-width: fit-content;
+}
+
+.logo {
+    font-size: 1.6rem;
+    color: #555964;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+}
+
+.apiBtn {
+    background: #00c6bc;
+    padding: 0.3rem 2rem;
+    border: 2px solid #00c6bc;
+    border-radius: 4px;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    color: white;
+    font-size: 1.1rem;
+    letter-spacing: 0.1rem;
+}
+
+.apiBtn:hover {
+    background-color: transparent;
+    color: #343434;
+}
+
+.apiBtn:active {
+    transform: scale(0.9);
+}
