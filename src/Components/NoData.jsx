@@ -7,11 +7,12 @@ const NoData = () => {
 			style={{
 				width: '100%',
 				display: 'flex',
+                fontFamily:"roboto",
 				flexDirection: 'column',
 				alignItems: 'center',
 				justifyContent: 'center',
 				color: '#fff',
-				fontSize: '3rem',
+				fontSize: '3.5rem',
 				fontWeight: '700',
 				letterSpacing: '0.2rem',
 			}}
