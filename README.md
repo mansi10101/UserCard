@@ -1,70 +1,120 @@
-# Getting Started with Create React App
+# User Card
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Online Demo](https://shimmering-biscotti-8b73b3.netlify.app/)
 
-## Available Scripts
+A react. js-based User card application which uses [REST API](https://reqres.in/api/users?page=1) to fetch data and display it using CSS-grid. Integrated loading and pagination mechanism using custom build React.js functions.
 
-In the project directory, you can run:
+## Set Up
 
-### `npm start`
+Enter the following commands in the command prompt to download and run the project in your local device.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `git clone https://github.com/mansi10101/UserCard`
+- `cd UserCard`
+- `npm install`
+- `npm start`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Folder Structure
 
-### `npm test`
+Here is a folder list containing all the important files/folders in this project.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+UserCard
+│
+└───public
+│   index.html
+└───src
+│   │   App.js
+│   │   App.css
+│   └───assets
+│   │       loading.svg
+│   │       no-data.svg
+│   └───Components
+│   │       └───Cards
+│   │       │     Cards.jsx
+│   │       │     index.jsx
+│   │       Layout.jsx
+│   │       Loading.jsx
+│   │       Navbar.jsx
+│   │       NoData.jsx
+│   └───stylesheets
+│   │       Cards.module.css
+│   │       Layout.module.css
+│   │       Navbar.module.css
+│   README.md
+│   package.json
+│
+```
 
-### `npm run build`
+## Functionality
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### API calls
+The application uses two seperate ways of dealing with API calls. One to handle the call when a user triggers it by clicking on the **Get Users** button, and another when the user wants to toggle between seperate pages of the API data.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **'Get Users' Button**
+We use a custom async function that utilises javascript's `fetch` method to make an API call. This function is defined in `Layout.jsx` and is passed to the `Navbar.jsx` component via props which is then called whenever the user clicks on the **Get Users** button in the navbar.
+```
+<!--Function declared in Layout.jsx-->
+    const apiCall = () => {
+		setRefresh(true);
+		fetch(`https://reqres.in/api/users?page=1`)
+			.then((res) => res.json())
+			.then((json) => {
+				setUsers(json);
+				setRefresh(false);
+				setPage(1);
+			});
+	};
+	
+<!--Trigerred on button click-->
+    <button className={styles.apiBtn} onClick={() => apiCall()}>
+		Get Users
+	</button>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Pagination**
+We make use of React hooks to fullfill our requirement. First we define a state to handle our current page that is to be requested using ``UseState`` and then a ``UseEffect`` to monitor any changes done on the discussed page-state. The ``UseEffect`` hook contains a fetch method to call the api for the current page that the user requires. The page number can be toggled by the users with the help of pagination buttons available at the end of the card grid. The buttons uses updates the current page state using the ``setPage`` call back function passed to it via props.
 
-### `npm run eject`
+```
+<!--Defining our page state-->
+	const [page, setPage] = React.useState(undefined);
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<!--Definig the useEffect with page state as a dependencies-->
+React.useEffect(() => {
+	if (page !== undefined) {
+		setRefresh(true);
+		fetch(`https://reqres.in/api/users?page=${page}`)
+			.then((res) => res.json())
+			.then((json) => {
+				setUsers(json);
+				setRefresh(false);
+			});
+	}
+}, [page]);
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!--Toggling page state-->
+<div className={styles.pagination}>
+	<button
+		className={styles.paginationBtn}
+		disabled={page === 1}
+		onClick={() => setPage(page - 1)}
+	>
+		Previous
+	</button>
+	<button
+		className={styles.paginationBtn}
+		disabled={page === users.total_pages}
+		onClick={() => setPage(page + 1)}
+	>
+		Next
+	</button>
+</div>
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Loading mechanism
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To integrate a loading mechanism in the project we take use of React's ``UseState`` hook to handle a **refresh** state which defines when the API is in process and when it is finished collecting data from the server. Secondly, we make use of nested ternary operator to determine wether to display the loading screen or the user grid or an empty screen prompting to call API. We initialise the state with ``false``, and on start of every API call we change it to ``true`` and as soon as the application is done collecting data from the server we chage the state back to ``false``. This way we can keep track of when and for how long does the API calling process takes place. We display the content screen with respect to this refresh state and our data.
+```
+<!--Initailising refresh state as false-->
+	const [refresh, setRefresh] = React.useState(false);
+```
+You will notice in the **API calls** section that how we alter the refresh state at the start and at the end of every call.
