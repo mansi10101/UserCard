@@ -38,3 +38,19 @@
 .apiBtn:active {
     transform: scale(0.9);
 }
+
+
+@media screen and (width <=400px) {
+    .container {
+        padding: 0.5rem 1rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .apiBtn {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+}

@@ -6,18 +6,7 @@ import Navbar from '../Components/Navbar';
 const Layout = () => {
 	const [users, setUsers] = React.useState();
 	const [refresh, setRefresh] = React.useState(false);
-	const [page, setPage] = React.useState(undefined);
-
-	const apiCall = () => {
-		setRefresh(true);
-		fetch(`https://reqres.in/api/users?page=1`)
-			.then((res) => res.json())
-			.then((json) => {
-				setUsers(json);
-				setRefresh(false);
-				setPage(1);
-			});
-	};
+	const [page, setPage] = React.useState(undefined)
 
 	React.useEffect(() => {
 		if (page !== undefined) {
@@ -34,7 +23,8 @@ const Layout = () => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.section}>
-				<Navbar apiCall={apiCall} page={page} />
+				{/* <Navbar apiCall={apiCall} page={page} /> */}
+				<Navbar apiCall={() => setPage(1)} page={page} />
 			</div>
 			<div className={styles.section}>
 				<CardWrapper
