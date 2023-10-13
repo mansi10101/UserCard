@@ -6,11 +6,13 @@
     margin-top: 2%;
 }
 
+
+
 .content {
     display: flex;
     flex-direction: column;
     row-gap: 2rem;
-    
+
 }
 
 .divider {
@@ -111,6 +113,7 @@
     .cards {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .container {
         padding: 1rem 3rem;
     }
@@ -123,6 +126,7 @@
     .cards {
         grid-template-columns: repeat(3, 1fr);
     }
+
     .container {
         padding: 1rem 5rem;
     }
